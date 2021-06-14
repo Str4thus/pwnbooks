@@ -2,10 +2,7 @@ _FILE_TO_TAG_DICT = {
     "nmap": "<nmap/>",
     "gobust": "<gobust/>",
     "vhost": "<vhost/>",
-    "passwd": "<passwd/>",
-    "shadow": "<shadow/>",
-    "sam": "<sam/>",
-    "sys": "<sys/>",
+    "hashes": "<hashes/>"
 }
 
 

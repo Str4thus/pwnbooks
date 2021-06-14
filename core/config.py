@@ -6,11 +6,10 @@ from typing import Union, List
 _CONFIG_FILE = Path.home() / ".pwnbooks.conf"
 
 _DEFAULT_CONFIG = {
-    "root_path": "/opt/sphere",
-    "lab_dir": "labs",
-    "template_dir": "templates",
+	"note_dir": "/writings/notes",
+    "template_dir": "/writings/notes/__templates",
 
-    "current": "",
+    "blog_dir": "/writings/blog",
 }
 
 if not _CONFIG_FILE.is_file():

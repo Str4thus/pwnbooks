@@ -54,6 +54,7 @@ def import_modules(folder: str):
 
 # import modules and link parsers
 import_modules("core")
+import_modules("blog")
 
 subcommand_args = dict(vars(parser.parse_args()))
 subcommand = subcommand_args.pop("subcommand", None)
