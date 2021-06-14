@@ -39,6 +39,9 @@ hero_image: {box_name}.png
 show_sidebar: true
 feed:
     limit: 10
+taxonomy:
+    tag: []
+    author: str4thus
 ---
 
 <summary>
