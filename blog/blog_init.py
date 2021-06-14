@@ -1,5 +1,3 @@
-# pwnbooks.py blog update
-# -> commit and push to repo
 import os
 from datetime import datetime
 from argparse import ArgumentParser

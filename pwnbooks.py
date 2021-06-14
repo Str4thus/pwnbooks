@@ -1,33 +1,5 @@
 #!/usr/bin/python3
 import os
-import argparse
-import shutil
-from pathlib import Path
-
-parser = argparse.ArgumentParser()
-sub_parsers = parser.add_subparsers(dest="subcommand")
-
-
-# pwnbooks.py own user <flag>
-# pwnbooks.py import /ctf/htb/boxes/blue/nmap/default.nmap (determine file based on extension, use <nmap></nmap> tags in markdown to insert it there)
-# pwnbooks.py import passwd -> automatically determine /etc/passwd and put it into codeblock
-# pwnbooks.py init blue (maybe --template <type>?)
-# pwnbooks.py save
-
-# jarvis.py join htb blue --release --target 10.10.10.210 --pwnbooks (inits pwnbooks for the box)
-# jarvis.py pb_own user 83f8e8c38012039daf202
-# jarvis.py pb_import nmap/default.nmap 
-# jarvis.py pb_change crossfit (changes the pwnbooks context to crossfit [update target if possible?])
-
-# def import_file(path) ---> interface for jarvis.py to import files (default tags to substitue are retrieved from dict in the pwnbooks file maybe?)
-# def own(type, flag)
-# def init(box_name, ip=None, template=None)
-# def change_active_book(box_name)
-# def save_changes() ----> push to github repo
-
-#!/usr/bin/python3
-
-import os
 import sys
 import argparse
 import importlib

@@ -5,7 +5,7 @@ from core.config import get_config_value
 
 
 def add_parser(sub_parsers: ArgumentParser) -> None:
-    blog_init_parser = sub_parsers.add_parser("blog_update")
+    sub_parsers.add_parser("blog_update")
 
 def main() -> None:
     blog_dir = Path(get_config_value("blog_dir"))
