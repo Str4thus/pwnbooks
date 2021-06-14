@@ -7,7 +7,7 @@ _CONFIG_FILE = Path.home() / ".pwnbooks.conf"
 
 _DEFAULT_CONFIG = {
 	"note_dir": "/writings/notes",
-    "template_dir": "/writings/notes/__templates",
+	"template_dir": "/writings/notes/__templates",
 
     "blog_dir": "/writings/blog",
 }

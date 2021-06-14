@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import os
 import sys
 import argparse
@@ -9,6 +10,7 @@ from pathlib import Path
 _MODULE_DICT = {}
 parser = argparse.ArgumentParser()
 sub_parsers = parser.add_subparsers(dest="subcommand")
+
 
 def get_script_path():
     return Path(os.path.dirname(os.path.realpath(sys.argv[0])))
@@ -24,15 +26,16 @@ def import_modules(folder: str):
 		_MODULE_DICT[module_name] = module.main
 
 
-# import modules and link parsers
-import_modules("core")
-import_modules("blog")
+if __name__ == "__main__":
+	# import modules and link parsers
+	import_modules("core")
+	import_modules("blog")
 
-subcommand_args = dict(vars(parser.parse_args()))
-subcommand = subcommand_args.pop("subcommand", None)
+	subcommand_args = dict(vars(parser.parse_args()))
+	subcommand = subcommand_args.pop("subcommand", None)
 
-if not subcommand:
-	parser.print_help()
-	exit(1)
+	if not subcommand:
+		parser.print_help()
+		exit(1)
 
-_MODULE_DICT[subcommand](**subcommand_args)
+	_MODULE_DICT[subcommand](**subcommand_args)
