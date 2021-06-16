@@ -48,7 +48,26 @@ taxonomy:
 
 ---
 
-<content>
+## Reconnaissance
+### nmap
+---
+
+## Enumeration
+
+---
+
+## Exploitation
+### Foothold
+
+---
+
+## Post-Exploitation
+### PrivEsc: User
+### PrivEsc: Root
+
+---
+
+## Mitigation
 
 """)
 
