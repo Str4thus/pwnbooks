@@ -33,7 +33,7 @@ title: '{title}'
 date: '{datetime.now().strftime("%d-%m-%Y %H:%M")}'
 author: Str4thus
 hero_classes: 'text-light title-h1h2 parallax overlay-dark-gradient hero-large'
-hero_image: thumbnail.png
+hero_image: "_thumbnail.png"
 show_sidebar: true
 feed:
     limit: 10
