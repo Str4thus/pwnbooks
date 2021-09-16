@@ -15,7 +15,7 @@ sub_parsers = parser.add_subparsers(dest="subcommand")
 def get_script_path():
     return Path(os.path.dirname(os.path.realpath(sys.argv[0])))
 
-def import_modules(folder: str):
+def import_module(folder: str):
 	module_dir = get_script_path() / folder
 	for module_file in os.listdir(module_dir):
 		if ".py" not in module_file:
@@ -28,8 +28,8 @@ def import_modules(folder: str):
 
 if __name__ == "__main__":
 	# import modules and link parsers
-	import_modules("core")
-	import_modules("blog")
+	import_module("core")
+	import_module("blog")
 
 	subcommand_args = dict(vars(parser.parse_args()))
 	subcommand = subcommand_args.pop("subcommand", None)
