@@ -29,29 +29,7 @@ def main(folder: str, title: str) -> None:
     post_file = Path(blog_dir, f"{title}.md")
     with post_file.open(mode="w") as f:
         f.write(f"""
-
             # {title}
-            ## Reconnaissance
-            ### nmap
-            ---
-
-            ## Enumeration
-
-            ---
-
-            ## Exploitation
-            ### Foothold
-
-            ---
-
-            ## Post-Exploitation
-            ### PrivEsc: User
-            ### PrivEsc: Root
-
-            ---
-
-            ## Mitigation
-
         """)
 
     print(f"Created blogpost '{title}' at {blog_dir}")
