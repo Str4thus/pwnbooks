@@ -19,7 +19,7 @@ def add_parser(sub_parsers: ArgumentParser) -> None:
 def _replace_image_links(writeup_path):
     with open(writeup_path, "r") as f:
         content = f.read()
-        replaced_content = re.sub("\]\(", "](./", content, flags=re.M)
+        replaced_content = re.sub("\]\(P", "](./P", content, flags=re.M)
 
     with open(writeup_path, "w") as f:
         f.write(replaced_content)
