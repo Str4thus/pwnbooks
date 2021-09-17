@@ -10,4 +10,4 @@ def add_parser(sub_parsers: ArgumentParser) -> None:
 def main() -> None:
     note_dir = Path(get_config_value("note_dir"))
 
-    os.system(f"cd {note_dir}; git add -A; git commit -m 'pwnbooks.py auto-update'; git push")
+    os.system(f"cd {note_dir}; git pull; git add -A; git commit -m 'pwnbooks.py auto-update'; git push")

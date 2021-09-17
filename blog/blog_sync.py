@@ -1,7 +1,8 @@
 import string
 import shutil
 import re
-import core.update
+
+from .blog_update import update_blog
 
 from argparse import ArgumentParser
 from pathlib import Path
@@ -108,5 +109,5 @@ def main(auto_update: bool=False) -> None:
                         _copy_writeup_folders(lab_dir.stem, box_dir.stem, writeup_dir)
 
     if auto_update:
-        core.update.main()
+        update_blog()
         
