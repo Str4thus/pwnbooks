@@ -28,7 +28,7 @@ def _add_entry_to_summary(lab_name, box_name):
     blog_dir = Path(get_config_value("blog_dir"))
 
     lab_entry = f"* [{lab_name.upper()}]({lab_name}/README.md)\n"
-    box_entry = f"    * [{box_name.capitalize()}]({lab_name}/{box_name}/{box_name}.md)\n"
+    box_entry = f"  * [{box_name.capitalize()}]({lab_name}/{box_name}/{box_name}.md)\n"
 
     with open(blog_dir / "SUMMARY.md", "r") as summary:
         entries = [entry for entry in summary.readlines()]
