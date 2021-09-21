@@ -69,7 +69,7 @@ def _copy_writeup_folders(lab_name, box_name, writeup_dir):
         blog_box_dir.mkdir()
 
     # Copy Writeup
-    writeup_md = writeup_dir / "Writeup.md"
+    writeup_md = writeup_dir / "writeup.md"
     target_writeup_path = blog_box_dir / f"{box_name.lower()}.md"
     shutil.copyfile(writeup_md, target_writeup_path)
 
@@ -103,7 +103,7 @@ def main(auto_update: bool=False) -> None:
         for box_dir in lab_dir.iterdir():
             if box_dir.is_dir():
                 for box_notes in box_dir.iterdir():
-                    if box_notes.stem == "-> Writeup":
+                    if box_notes.stem == "__writeup":
                         writeup_dir = box_notes
 
                         _copy_writeup_folders(lab_dir.stem, box_dir.stem, writeup_dir)
