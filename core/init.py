@@ -14,7 +14,7 @@ def main(lab_name: str, box_name: str, template="ctf") -> None:
     target_dir = Path(get_config_value("note_dir")) / lab_name / box_name
     template_dir = Path(get_config_value("template_dir")) / template
 
-    os.system(f"cd {get_config_value('note_dir')}; git pull")
+    os.system(f"cd {get_config_value('note_dir')}; git pull 1>/dev/null")
 
     if os.path.isdir(target_dir):
         print(f"Notes for '{box_name}' already exist!")   

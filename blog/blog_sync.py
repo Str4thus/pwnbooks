@@ -28,7 +28,8 @@ def _add_entry_to_summary(lab_name, box_name):
     blog_dir = Path(get_config_value("blog_dir"))
 
     lab_entry = f"* [{lab_name.upper()}]({lab_name}/README.md)\n"
-    box_entry = f"  * [{box_name.capitalize()}]({lab_name}/{box_name}/{box_name}.md)\n"
+    box_entry_1 = f"  * [{box_name.capitalize()}]({lab_name}/{box_name}/{box_name}.md)\n"
+    box_entry_2 = f"  * [{box_name.capitalize()}]({lab_name}/{box_name}/{box_name}.md)\n"
 
     with open(blog_dir / "SUMMARY.md", "r") as summary:
         entries = [entry for entry in summary.readlines()]
@@ -41,13 +42,13 @@ def _add_entry_to_summary(lab_name, box_name):
 
     lowercase_entries = [entry.lower() for entry in entries]
     # Check if writeup already exists
-    if box_entry.lower() not in lowercase_entries:
+    if box_entry_1.lower() not in lowercase_entries and box_entry_2.lower() not in lowercase_entries:
         lab_entry_index = lowercase_entries.index(lab_entry.lower())
 
         if lab_entry_index == len(entries)+1:
-            entries.append(box_entry)
+            entries.append(box_entry_1)
         else:
-            entries.insert(lab_entry_index+1, box_entry)
+            entries.insert(lab_entry_index+1, box_entry_1)
 
 
     with open(blog_dir / "SUMMARY.md", "w") as summary:
@@ -60,27 +61,31 @@ def _copy_writeup_folders(lab_name, box_name, writeup_dir):
     blog_lab_dir = blog_dir / lab_name
     blog_box_dir = blog_dir / lab_name / box_name
 
-    if not blog_lab_dir.exists():
-        blog_lab_dir.mkdir()
-        initial_readme_md = blog_lab_dir / "README.md"
-        initial_readme_md.touch()
-    
-    if not blog_box_dir.exists():
-        blog_box_dir.mkdir()
 
     # Copy Writeup
     writeup_md = writeup_dir / "writeup.md"
-    target_writeup_path = blog_box_dir / f"{box_name.lower()}.md"
-    shutil.copyfile(writeup_md, target_writeup_path)
 
-    # Copy Images
-    writeup_image_dir = writeup_dir / "img"
+    gitbook_file = blog_dir / lab_name / f"{box_name.lower()}.md"
+    target_writeup_file = blog_box_dir / f"{box_name.lower()}.md"
+    if not gitbook_file.exists() and not target_writeup_file.exists():
+        if not blog_lab_dir.exists():
+            blog_lab_dir.mkdir()
+            initial_readme_md = blog_lab_dir / "README.md"
+            initial_readme_md.touch()
+        
+        if not blog_box_dir.exists():
+            blog_box_dir.mkdir()
 
-    if writeup_image_dir.exists():
-        shutil.copytree(writeup_image_dir, blog_box_dir, dirs_exist_ok=True)
+        shutil.copyfile(writeup_md, target_writeup_file)
 
-    _add_entry_to_summary(lab_name, box_name)
-    _replace_image_links(target_writeup_path)
+        # Copy Images
+        writeup_image_dir = writeup_dir / "img"
+
+        if writeup_image_dir.exists():
+            shutil.copytree(writeup_image_dir, blog_box_dir, dirs_exist_ok=True)
+
+        _add_entry_to_summary(lab_name, box_name)
+        _replace_image_links(target_writeup_file)
 
 
 def main(auto_update: bool=False) -> None:
